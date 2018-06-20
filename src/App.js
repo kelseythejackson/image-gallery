@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-          <Container keyword apiKey />
+          <Container />
       </BrowserRouter>
 
     );
