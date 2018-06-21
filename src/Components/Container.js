@@ -4,6 +4,7 @@ import Header from './Header';
 import Gallery from './Gallery';
 import Search from './Search';
 
+
 const Container = () => {
  return(
    <div className="container">
