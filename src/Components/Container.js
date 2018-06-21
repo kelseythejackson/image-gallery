@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Header from './Header';
 import Gallery from './Gallery';
 import Search from './Search';
-import apiKey from '../../config';
+
 
 const Container = () => {
  return(
