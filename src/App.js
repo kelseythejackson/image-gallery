@@ -1,36 +1,31 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import apiKey from './config';
-import Container from './Components/Container';
-import axios from 'axios';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Header from './Components/Header';
+import ImagesContainer from './Components/ImagesContainer';
+
+
+
 
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      images: []
-    };
-  }
+  // constructor() {
+  //   super();
+  //
+  // }
 
   componentDidMount() {
-    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=sunsets&per_page=25&format=json&nojsoncallback=1`)
-    .then(response => response.json())
-    .then(responseData => {
-      this.setState({ images: responseData.photos })
-    })
-    .catch(error => {
-      console.log('Error fetching and parsing data', error)
-    });
-    // this.getData();
+
+    // this.getData("cat");
+    // this.getData("dog");
+    // this.getData("computer");
   }
 
-  // getData = () => {
-  //   axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=67a5e3716cf1d970d8bbc31c0ed438a3&tags=sunsets&per_page=25&format=json&nojsoncallback=1`)
+  // getData = (keyword = 'sunsets') => {
+  //   axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${keyword}&per_page=25&format=json&nojsoncallback=1`)
   //     .then(response => {
-  //       console.log(response.data.photos);
+  //
   //       this.setState({
-  //         images: response.data.photos
+  //         [`${keyword}Images`]: response.data.photos.photo
   //       });
   //     })
   //     .catch(error => {
@@ -40,7 +35,14 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-          <Container />
+        <div className="container">
+          <Header />
+          <Route exact path="/" render={ () => <ImagesContainer  title="Cats" keyword="cats" /> } />
+          <Route path="/cats" render={ () => <ImagesContainer  title="Cats" keyword="cats" /> } />
+          <Route path="/dogs" render={ () => <ImagesContainer  title="Dogs" keyword="dogs" /> } />
+          <Route path="/computers" render={ () => <ImagesContainer  title="Computer" keyword="computers"/> } />
+          <Route path="/sneakers" render={ () => <ImagesContainer  title="Sneakers" keyword="sneakers" /> } />
+        </div>
       </BrowserRouter>
 
     );

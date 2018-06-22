@@ -1,11 +1,11 @@
 import React from 'react';
 import Form from './Form';
-import Gallery from './Gallery'
+import PhotoContainer from './PhotoContainer'
 
 const Search = (props) =>
   <div>
     <Form />
-    <Gallery title={props.title}/>
+    <PhotoContainer title={props.title}/>
   </div>
 
 export default Search
