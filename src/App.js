@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Header from './Components/Header';
 import ImagesContainer from './Components/ImagesContainer';
+import PageNotFound from './Components/PageNotFound';
+// import NotFound from './Components/NotFound';
 
 
 
@@ -37,12 +39,15 @@ class App extends Component {
       <BrowserRouter>
         <div className="container">
           <Header />
-          <Route exact path="/" render={ () => <ImagesContainer  title="Cats" keyword="cats" /> } />
-          <Route path="/cats" render={ () => <ImagesContainer  title="Cats" keyword="cats" /> } />
-          <Route path="/dogs" render={ () => <ImagesContainer  title="Dogs" keyword="dogs" /> } />
-          <Route path="/computers" render={ () => <ImagesContainer  title="Computer" keyword="computers"/> } />
-          <Route path="/sneakers" render={ () => <ImagesContainer  title="Sneakers" keyword="sneakers" /> } />
-          <Route path="/search" render={ () => <ImagesContainer  title="Results" search /> } />
+          <Switch>
+            <Route exact path="/" render={ () => <Redirect  to="/cats" /> } />
+            <Route path="/cats" render={ () => <ImagesContainer  title="Cats" keyword="cats" /> } />
+            <Route path="/dogs" render={ () => <ImagesContainer  title="Dogs" keyword="dogs" /> } />
+            <Route path="/computers" render={ () => <ImagesContainer  title="Computer" keyword="computers"/> } />
+            <Route path="/sneakers" render={ () => <ImagesContainer  title="Sneakers" keyword="sneakers" /> } />
+            <Route path="/search" render={ () => <ImagesContainer keyword="Search" search /> } />
+            <Route component={PageNotFound} />
+          </Switch>
         </div>
       </BrowserRouter>
 
