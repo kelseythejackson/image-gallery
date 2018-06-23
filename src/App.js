@@ -42,6 +42,7 @@ class App extends Component {
           <Route path="/dogs" render={ () => <ImagesContainer  title="Dogs" keyword="dogs" /> } />
           <Route path="/computers" render={ () => <ImagesContainer  title="Computer" keyword="computers"/> } />
           <Route path="/sneakers" render={ () => <ImagesContainer  title="Sneakers" keyword="sneakers" /> } />
+          <Route path="/search" render={ () => <ImagesContainer  title="Results" search /> } />
         </div>
       </BrowserRouter>
 
