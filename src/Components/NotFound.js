@@ -1,12 +1,12 @@
 import React from 'react';
 
-const NotFound = () =>
-<ul>
+const NotFound = props =>
+
   <li className="not-found">
-    <h3>No Results Found</h3>
+    <h3>No Results Found for '{props.title}'</h3>
     <p>You search did not return any results. Please try again.</p>
   </li>
-</ul>
 
 
-export default Notfound;
+
+export default NotFound;
