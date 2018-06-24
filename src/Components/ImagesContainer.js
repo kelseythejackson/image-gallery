@@ -23,29 +23,16 @@ class ImagesContainer extends Component {
     }
   }
 
-  componentDidMount() {
-
-  }
-
-
   componentDidUpdate(prevProps, prevState) {
-
-      if(prevProps.keyword!==this.props.keyword){
-
-        this.setState({
-          title: this.props.title,
-          loading: true,
-          images: []
-        });
-        this.getData(this.props.keyword);
-      }
-
-
-
-
+    if(prevProps.keyword!==this.props.keyword){
+      this.setState({
+        title: this.props.title,
+        loading: true,
+        images: []
+      });
+      this.getData(this.props.keyword);
+    }
   }
-
-
 
   getData = (keyword) => {
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${keyword}&per_page=24&format=json&nojsoncallback=1`)
@@ -56,13 +43,10 @@ class ImagesContainer extends Component {
           loading: false,
           title: [keyword]
         });
-
       })
       .catch(error => {
     console.log('Error fetching and parsing data', error);
       });
-
-
   }
 
   render() {
@@ -80,11 +64,6 @@ class ImagesContainer extends Component {
     } else {
       images = <NotFound title={this.state.title}/>
     }
-
-
-
-
-
 
     if(this.props.search) {
       return (
